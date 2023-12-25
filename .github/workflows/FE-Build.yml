@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  working-directory: gui
+  working-directory: web-gui
 
 jobs:
   # Build job
