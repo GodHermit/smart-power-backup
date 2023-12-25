@@ -1,0 +1,39 @@
+name: "🚀 Feature Request"
+description: Suggest an idea for this project
+title: "[REQUEST] - <title>"
+labels: [
+  "enhancement"
+]
+body:
+  - type: textarea
+    id: reference_issues
+    attributes:
+      label: "Is your feature request related to a problem?"
+      description: Provide a brief explanation of the feature
+      placeholder: "Describe in a few lines your feature request"
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: "Describe the solution you'd like"
+      description: Provide a brief explanation of the solution
+      placeholder: Describe in a few lines your feature request
+    validations:
+      required: true
+  - type: textarea
+    id: basic_example
+    attributes:
+      label: "Basic Example"
+      description: Indicate here some basic examples of your feature.
+      placeholder: A few specific words about your feature request.
+    validations:
+      required: true
+  - type: textarea
+    id: drawbacks
+    attributes:
+      label: "Drawbacks"
+      description: What are the drawbacks/impacts of your feature request ?
+      placeholder: Identify the drawbacks and impacts while being neutral on your feature request
+    validations:
+      required: true
