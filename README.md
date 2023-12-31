@@ -14,4 +14,6 @@ Please follow our [Code of Conduct](CODE_OF_CONDUCT.md) when you communicate wit
 
 ## Contributing
 
-Please see [our contributing guide](/CONTRIBUTING.md).
+Contributions are always welcome!
+
+Please see [our contributing guide](/CONTRIBUTING.md) for more details.
