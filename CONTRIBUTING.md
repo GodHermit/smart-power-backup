@@ -47,6 +47,17 @@ Document | Refactor of documentation, e.g. help files.
 * The main branch is basically a snapshot of the latest stable version. All development **MUST** be done in dedicated branches.
 * Pull requests must be made against the `main` branch.
 * It is good to have multiple small commits while working on the PR. We'll let GitHub squash it automatically before the merge.
+* Review your own code.
+  * Make sure that you didn't leave any debug code, console logs, etc.
+  * If you are adding a new feature, make sure that you have added documentation for it.
+* Assign the PR to @GodHermit (Oleh Proidakov).
+* If your PR is not ready for review yet, add the `[WIP]` prefix to the title.
+
+### Merge Policy
+
+* The PR will be merged once it has been approved by at least one maintainer.
+* If there are any conflicts, the PR will be merged once the conflicts have been resolved. If you are not sure how to resolve the conflicts, ask for help in the comments.
+* All conversations in the PR must be resolved before the PR can be merged.
 
 ## Code Style
 
