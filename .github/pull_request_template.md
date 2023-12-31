@@ -19,13 +19,16 @@ on the devices and browsers this has been tested on, as well as any relevant
 images for UI changes._
 
 ### UI accessibility checklist
+
 _If your PR includes UI changes, please utilize this checklist:_
+
 - [ ] Semantic HTML implemented?
 - [ ] Keyboard operability supported?
 - [ ] Checked with [axe DevTools](https://www.deque.com/axe/) and addressed `Critical` and `Serious` issues?
 - [ ] Color contrast tested?
 
 ## Added/updated tests?
+
 _We encourage you to keep the code coverage percentage at 80% and above._
 
 - [ ] Yes
