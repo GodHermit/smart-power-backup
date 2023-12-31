@@ -1,6 +1,6 @@
 # Smart Power Backup Contributing Guide
 
-Hello!, I am very excited that you are interested in contributing. However, before submitting your contribution, be sure to take a moment and read the following guidelines.
+Hi 🖖! I am very excited that you are interested in contributing. However, before submitting your contribution, be sure to take a moment and read the following guidelines.
 
 ## Commit Conventions
 
@@ -50,15 +50,22 @@ Document | Refactor of documentation, e.g. help files.
 
 ## Code Style
 
-* We use slightly modified  [Google TypeScript Style](https://github.com/google/gts) for this project.
+* We use slightly modified [Google TypeScript Style](https://github.com/google/gts) for the frontend part.
 
 ## Development Setup
 
 This project uses monorepo structure. So, first steps depend on what you want to do.
 
-### If you want to work on the API
+### If you want to work on the backend part
+
+<!-- TODO: write instructions for the backend part -->
+
+> [!IMPORTANT]
+> This section is not yet applicable. Please wait for the backend part to be implemented.
 
 1. Clone the repository.
+2. Create a branch for your changes.
+    * Name your branch according to the following convention: `<issueNumber>/<branchName>`.
 
 ### If you want to work on the frontend part
 
