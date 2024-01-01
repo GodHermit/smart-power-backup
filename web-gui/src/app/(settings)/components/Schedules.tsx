@@ -7,7 +7,17 @@ import { useSettingsStore } from '../store/settingsStore';
 import { schedulePeriodToString } from '@/models/schedule';
 
 export function Schedules() {
-  const [schedules] = useSettingsStore(state => [state.schedules]);
+  const [schedules, setSettings] = useSettingsStore(state => [
+    state.schedules,
+    state.setSettings,
+  ]);
+
+  const handleStatusChange = (index: number, isEnabled: boolean) => {
+    const newSchedules = [...schedules];
+    newSchedules[index].isEnabled = isEnabled;
+
+    setSettings({ schedules: newSchedules });
+  };
 
   return (
     <SettingsGroup groupName="Розклад вимкнень">
@@ -25,6 +35,8 @@ export function Schedules() {
           <Switch
             className="ml-auto h-full"
             classNames={{ base: 'h-full', wrapper: 'm-0' }}
+            isSelected={schedule.isEnabled}
+            onChange={() => handleStatusChange(i, !schedule.isEnabled)}
           />
         </SettingsOption>
       ))}

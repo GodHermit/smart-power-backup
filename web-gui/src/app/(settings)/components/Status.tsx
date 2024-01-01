@@ -3,7 +3,7 @@
 import { SettingsGroup } from '@/components/UI/Settings/SettingsGroup';
 import { SettingsOption } from '@/components/UI/Settings/SettingsOption';
 import { useSettingsStore } from '../store/settingsStore';
-import { getDeviceStatusMessage } from '@/models/devices';
+import { StatusDevice } from './StatusDevice';
 
 export function Status() {
   const [batteryCharge, devices] = useSettingsStore(state => [
@@ -25,12 +25,7 @@ export function Status() {
         </span>
       </SettingsOption>
       {devices.map((device, i) => (
-        <SettingsOption as="div" key={i}>
-          <span className="text-sm">{device.name}</span>
-          <span className="ml-auto text-sm font-normal">
-            {getDeviceStatusMessage(device)}
-          </span>
-        </SettingsOption>
+        <StatusDevice device={device} key={i} />
       ))}
     </SettingsGroup>
   );

@@ -1,5 +1,5 @@
 import { Device } from '@/models/devices';
-import Schedule from '@/models/schedule';
+import { Schedule } from '@/models/schedule';
 import { create } from 'zustand';
 
 export interface SettingsState {
@@ -42,7 +42,7 @@ export const settingsStore = create<SettingsState>()(set => ({
   batteryCharge: 100,
   devices: [
     { name: 'Wi-Fi роутер', status: 'on' },
-    { name: 'Медіа конвертер', status: 'off' },
+    { name: 'Медіа конвертер', status: 'on' },
   ],
   schedules: [
     {
@@ -56,8 +56,8 @@ export const settingsStore = create<SettingsState>()(set => ({
         'saturday',
         'sunday',
       ]),
-      timeStart: '01:00',
-      timeEnd: '06:00',
+      timeStart: '15:30',
+      timeEnd: '16:10',
       isEnabled: true,
     },
   ],

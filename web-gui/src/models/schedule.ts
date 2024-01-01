@@ -7,7 +7,7 @@ export type Day =
   | 'saturday'
   | 'sunday';
 
-export default interface Schedule {
+export interface Schedule {
   /**
    * The name of the schedule.
    */
