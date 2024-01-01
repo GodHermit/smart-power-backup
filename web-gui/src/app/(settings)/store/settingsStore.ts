@@ -1,4 +1,5 @@
 import { Device } from '@/models/devices';
+import Schedule from '@/models/schedule';
 import { create } from 'zustand';
 
 export interface SettingsState {
@@ -15,6 +16,10 @@ export interface SettingsState {
    * The list of devices.
    */
   devices: Device[];
+  /**
+   * The list of schedules.
+   */
+  schedules: Schedule[];
   /**
    * Sets the settings.
    * @param settings The settings to set.
@@ -38,6 +43,23 @@ export const settingsStore = create<SettingsState>()(set => ({
   devices: [
     { name: 'Wi-Fi роутер', status: 'on' },
     { name: 'Медіа конвертер', status: 'off' },
+  ],
+  schedules: [
+    {
+      name: 'Під час сну',
+      period: new Set([
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
+        'sunday',
+      ]),
+      timeStart: '01:00',
+      timeEnd: '06:00',
+      isEnabled: true,
+    },
   ],
   setSettings: settings => set(settings),
   setBatteryCharge: batteryCharge => {
