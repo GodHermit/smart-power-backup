@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/",
+    "module": "CommonJS",
+    "target": "es5",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "allowJs": false,
+    "moduleResolution": "node",
+    "lib": [
+      "ES6",
+      "DOM",
+    ],
+    "baseUrl": "types",
+    "typeRoots": [
+      "./types"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+, "src/utils/wifi.js", "src/index.js"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
