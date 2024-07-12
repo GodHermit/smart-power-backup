@@ -8,9 +8,9 @@
     "build": "webpack",
     "watch": "npm-run-all --parallel watch:webpack watch:node",
     "watch:webpack": "webpack watch --env dev",
-    "watch:node": "node --watch build/rp2.js",
-    "flash": "yarn run build && kaluma flash build/rp2.js",
-    "debug": "yarn run build && kaluma flash build/rp2.js --shell",
+    "watch:node": "node --watch build/pico-w-software.js",
+    "flash": "yarn run build && kaluma flash build/pico-w-software.js",
+    "debug": "yarn run build && kaluma flash build/pico-w-software.js --shell",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -8,7 +8,7 @@ module.exports = {
   entry: path.resolve('src/index.js'),
   output: {
     path: path.resolve('build'),
-    filename: 'rp2.js',
+    filename: 'pico-w-software.js',
   },
   module: {
     rules: [
