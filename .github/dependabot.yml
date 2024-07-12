@@ -6,7 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/gui" # Location of package manifests
+    directory: "/web-gui" # Location of package manifests
     schedule:
       interval: "monthly"
-    target-branch: "dev"
+  - package-ecosystem: "yarn" # See documentation for possible values
+    directory: "/api" # Location of package manifests
+    schedule:
+      interval: "monthly"
