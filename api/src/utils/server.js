@@ -1,5 +1,7 @@
 const http = require('http');
 const { SettingsHTTP } = require('../api/settings/index.js');
+const { StatusHTTP } = require('../api/status/index.js');
+const { UserHTTP } = require('../api/user/index.js');
 
 export const serverConfig = {
   port: 80
@@ -15,6 +17,12 @@ export async function startServer() {
         switch (req.url) {
           case '/api/settings':
             response = await SettingsHTTP(req, res);
+            break;
+          case '/api/status':
+            response = await StatusHTTP(req, res);
+            break;
+          case '/api/user':
+            response = await UserHTTP(req, res);
             break;
 
           default:

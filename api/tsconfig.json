@@ -18,8 +18,11 @@
     ]
   },
   "include": [
-    "src/**/*.ts"
-, "src/utils/wifi.js", "src/index.js"  ],
+    "src/**/*.ts",
+    "src/utils/wifi.js",
+    "src/index.js",
+    "src/guards/user.js"
+  ],
   "exclude": [
     "node_modules"
   ]

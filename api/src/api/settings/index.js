@@ -1,19 +1,14 @@
-const { GPIO } = require('gpio');
-const Buffer = require('buffer/').Buffer;
-const { PicoCYW43 } = require('pico_cyw43');
-const pico_cyw43 = new PicoCYW43();
+import { userGuard } from '../../guards/user.js';
 
+const Buffer = require('buffer/').Buffer;
+const { getSettings, setSettings } = require('../../utils/settings.js');
 
 async function GET() {
-  const powerBackPin = new GPIO(0, OUTPUT);
+  const settings = getSettings();
 
   return {
     statusCode: 200,
-    body: {
-      // Relay is normally open, so LOW means power backup is enabled
-      isPowerBackupEnabled: powerBackPin.read() == LOW,
-      schedules: [], // TODO: Implement schedules
-    }
+    body: settings,
   };
 }
 
@@ -23,55 +18,31 @@ async function PUT(req) {
       console.log(`BODY: ${chunk}`);
       try {
         const jsonString = Buffer.from(chunk).toString('utf8');
-
         const parsedData = JSON.parse(jsonString);
-
-        const powerBackPin = new GPIO(0, OUTPUT);
 
         console.log(parsedData);
 
-        if (parsedData.isPowerBackupEnabled) {
-          powerBackPin.write(LOW);
-          pico_cyw43.putGpio(0, true); // turn-on LED
-        } else {
-          powerBackPin.write(HIGH);
-          pico_cyw43.putGpio(0, false); // turn-off LED
-        }
+        const newSettings = setSettings(parsedData);
 
-        resolve(
-          {
-            statusCode: 200,
-            body: {
-              isPowerBackupEnabled: powerBackPin.read() == LOW,
-            }
-          }
-        )
+        console.log('newSettings', newSettings);
+
+        resolve({
+          statusCode: 200,
+          body: newSettings,
+        });
       } catch (error) {
-        reject(error)
+        reject(error);
       }
     });
   });
-  // const body = JSON.parse(req.body || '{}');
-  // console.log(body);
-  // const powerBackPin = new GPIO(0, OUTPUT);
-
-  // if ('isPowerBackupEnabled' in body) {
-  //   // if (body.isPowerBackupEnabled){
-  //   //   powerBackPin.write(LOW);
-  //   // } else {
-  //   //   powerBackPin.write(HIGH);
-  //   // }
-  // }
-
-  return {
-    statusCode: 200,
-    body: {
-      isPowerBackupEnabled: false,
-    }
-  };
 }
 
 export async function SettingsHTTP(req, res) {
+  const guardRes = userGuard(req, res);
+  if (guardRes) {
+    return guardRes;
+  }
+
   switch (req.method) {
     case 'GET':
       return await GET();
@@ -80,7 +51,7 @@ export async function SettingsHTTP(req, res) {
     default:
       return {
         statusCode: 405,
-        body: 'Method Not Allowed'
+        body: 'Method Not Allowed',
       };
   }
 }
