@@ -9,7 +9,7 @@ updates:
     directory: "/web-gui" # Location of package manifests
     schedule:
       interval: "monthly"
-  - package-ecosystem: "yarn" # See documentation for possible values
+  - package-ecosystem: "npm" # See documentation for possible values
     directory: "/api" # Location of package manifests
     schedule:
       interval: "monthly"
