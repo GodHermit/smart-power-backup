@@ -35,8 +35,6 @@ export async function startServer() {
         return;
       }
 
-      console.log(response);
-
       if (!response) {
         res.writeHead(404, 'Not Found');
         res.write('Not Found');
