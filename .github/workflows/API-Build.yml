@@ -12,6 +12,26 @@ on:
       - '/api/**'
 
   workflow_dispatch:
+    inputs:
+      ACCESS_POINT_SSID:
+        description: 'Aceess Point SSID'
+        default: 'smart_power_backup'
+      ACCESS_POINT_PASSWORD:
+        description: 'Aceess Point Password'
+        default: '99999999'
+      ACCESS_POINT_GATEWAY:
+        description: 'Aceess Point Gateway'
+        default: '192.168.0.1'
+      JWT_SECRET:
+        description: 'JWT Secret'
+        required: true
+        default: 'smart-power-backup'
+      DEFAULT_USER_USERNAME:
+        description: 'Default User Username'
+        default: 'admin'
+      DEFAULT_USER_PASSWORD:
+        description: 'Default User Password'
+        default: 'admin'
 
 env:
   working-directory: api
@@ -33,12 +53,12 @@ jobs:
       - name: Write ENV file
         run: |
           touch .env
-          echo ACCESS_POINT_SSID=${{ secrets.ACCESS_POINT_SSID }} >> .env
-          echo ACCESS_POINT_PASSWORD=${{ secrets.ACCESS_POINT_PASSWORD }} >> .env
-          echi ACCESS_POINT_GATEWAY=${{ secrets.ACCESS_POINT_GATEWAY }} >> .env
-          echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
-          echo DEFAULT_USER_USERNAME=${{ secrets.DEFAULT_USER_USERNAME }} >> .env
-          echo DEFAULT_USER_PASSWORD=${{ secrets.DEFAULT_USER_PASSWORD }} >> .env
+          echo ACCESS_POINT_SSID=${{ inputs.ACCESS_POINT_SSID || secrets.ACCESS_POINT_SSID }} >> .env
+          echo ACCESS_POINT_PASSWORD=${{ inputs.ACCESS_POINT_PASSWORD || secrets.ACCESS_POINT_PASSWORD }} >> .env
+          echo ACCESS_POINT_GATEWAY=${{ inputs.ACCESS_POINT_GATEWAY || secrets.ACCESS_POINT_GATEWAY }} >> .env
+          echo JWT_SECRET=${{ inputs.JWT_SECRET || secrets.JWT_SECRET }} >> .env
+          echo DEFAULT_USER_USERNAME=${{ inputs.DEFAULT_USER_USERNAME || secrets.DEFAULT_USER_USERNAME }} >> .env
+          echo DEFAULT_USER_PASSWORD=${{ inputs.DEFAULT_USER_PASSWORD || secrets.DEFAULT_USER_PASSWORD }} >> .env
       - name: Detect package manager
         id: detect-package-manager
         run: |
