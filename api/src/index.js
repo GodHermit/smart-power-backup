@@ -6,7 +6,6 @@ const pico_cyw43 = new PicoCYW43();
 
 async function main() {
   let ledBlink;
-  let i = 0;
   try {
     await initializeSettings();
 

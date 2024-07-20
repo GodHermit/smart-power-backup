@@ -1,7 +1,5 @@
 const { PicoCYW43WIFI } = require('pico_cyw43');
 const picoWifi = new PicoCYW43WIFI();
-const { WiFi } = require('wifi');
-const wifi = new WiFi();
 
 /**
  * Access Point options
