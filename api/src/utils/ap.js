@@ -23,7 +23,9 @@ export const apOptions = {
  * @returns {Promise<void>}
  */
 export const initializeAccessPoint = async () => {
-  console.log(`Initializing WIFI Access Point (${apOptions.ssid})...`);
+  console.log(
+    `[Access Point] Initializing "${apOptions.ssid}"...`
+  );
   return await new Promise((res, rej) => {
     picoWifi.wifiApMode(apOptions, (err) => {
       if (err) {
@@ -32,8 +34,8 @@ export const initializeAccessPoint = async () => {
         return;
       }
 
-      console.log(`Access Point (${apOptions.ssid}) initialized`);
-      console.log(`Gateway: ${apOptions.gateway}`);
+      console.log(`[Access Point] initialized`);
+      console.log(`[Access Point] Gateway: ${apOptions.gateway}`);
       res();
     });
   });
