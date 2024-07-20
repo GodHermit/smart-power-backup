@@ -68,7 +68,9 @@ export async function startServer() {
     res.end();
   });
 
-  server.listen(serverConfig.port, () => {
-    console.log(`Server started on ${server._dev.ip}:${serverConfig.port}`);
-  });
+  setTimeout(() => {
+    server.listen(serverConfig.port, () => {
+      console.log(`Server started on ${server._dev.ip}:${serverConfig.port}`);
+    });
+  }, 2000);
 }
