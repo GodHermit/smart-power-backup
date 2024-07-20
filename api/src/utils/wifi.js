@@ -1,6 +1,5 @@
 const { WiFi } = require('wifi');
 const wifi = new WiFi();
-const http = require('http');
 
 /**
  * Returns a random port number
@@ -13,9 +12,9 @@ export function getRandomPort() {
 }
 
 /**
- * 
- * @param {string} ssid 
- * @param {string} password 
+ *
+ * @param {string} ssid
+ * @param {string} password
  */
 export async function connectToWifi(ssid, password) {
   console.log('Connecting to WiFi....');
@@ -25,15 +24,8 @@ export async function connectToWifi(ssid, password) {
         console.error(err);
         rej(err);
       } else {
-        wifi.getConnection(async (err, connInfo) => {
-          console.log('Connected to Wifi: ' + connInfo.ssid);
-          if (err) {
-            rej(err);
-          } else {
-            res();
-          }
-        });
+        res();
       }
-    })
+    });
   });
 }

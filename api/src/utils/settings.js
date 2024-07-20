@@ -13,9 +13,11 @@ export const initializeSettings = async () => {
     );
     storage.setItem(APP_SETTINGS_KEY, JSON.stringify(initialSettings));
     runSettings(initialSettings);
+    return initialSettings;
   } else {
     console.log('Settings from storage:', settings);
     runSettings(JSON.parse(settings));
+    return JSON.parse(settings);
   }
 };
 

@@ -1,22 +1,32 @@
-const { connectToWifi } = require('./utils/wifi.js');
 const { startServer } = require('./utils/server.js');
-const { initializeSettings } = require('./utils/settings.js');
+const { initializeSettings, getSettings } = require('./utils/settings.js');
+const { initializeAccessPoint } = require('./utils/ap.js');
+const { PicoCYW43 } = require('pico_cyw43');
+const pico_cyw43 = new PicoCYW43();
 
 async function main() {
+  let ledBlink;
+  let i = 0;
   try {
     await initializeSettings();
 
-    if (!process.env.WIFI_SSID || !process.env.WIFI_PASSWORD) {
-      throw new Error(
-        'Please provide a WIFI_SSID and WIFI_PASSWORD in your environment variables'
-      );
-    }
+    ledBlink = setInterval(() => {
+      if (pico_cyw43.getGpio(0)) {
+        pico_cyw43.putGpio(0, false);
+      } else {
+        pico_cyw43.putGpio(0, true);
+      }
+    }, 200);
 
-    await connectToWifi(process.env.WIFI_SSID, process.env.WIFI_PASSWORD);
-
+    await initializeAccessPoint();
     await startServer();
+
   } catch (error) {
     console.log(error);
+  } finally {
+    const settings = getSettings();
+    pico_cyw43.putGpio(0, settings.isPowerBackupEnabled);
+    clearInterval(ledBlink);
   }
 }
 
