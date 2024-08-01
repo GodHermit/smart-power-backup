@@ -15,7 +15,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@nextui-org/button": "^2.0.26",
+    "@nextui-org/button": "^2.0.37",
     "@nextui-org/input": "^2.1.16",
     "@nextui-org/modal": "^2.0.36",
     "@nextui-org/react": "^2.2.9",
